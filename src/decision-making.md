@@ -22,4 +22,5 @@ flowchart TD
     R --> D[Decision]
     D --> A[Architecture Record]
     A --> I[Implementation Guidance]
+    A --> T[Test]
 ```
