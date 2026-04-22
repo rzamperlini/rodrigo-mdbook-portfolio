@@ -1,7 +1,6 @@
 [book]
 authors = ["Rodrigo Zamperlini"]
 language = "en"
-multilingual = false
 src = "src"
 title = "Rodrigo Zamperlini | Integration & Solution Architecture"
 description = "Portfolio for solution architecture, integration architecture, Power Platform, and enterprise systems."
