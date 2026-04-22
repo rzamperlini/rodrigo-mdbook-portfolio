@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout du repo
+      # 1. Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -24,33 +24,33 @@ jobs:
           curl https://sh.rustup.rs -sSf | sh -s -- -y
           echo "$HOME/.cargo/bin" >> $GITHUB_PATH
 
-      # 3. Installer mdBook
-      - name: Install mdBook
-        run: cargo install mdbook
+      # 3. Installer mdBook + Mermaid plugin
+      - name: Install mdBook and Mermaid
+        run: |
+          cargo install mdbook
+          cargo install mdbook-mermaid
 
-      # 4. Installer mdbook-mermaid
-      - name: Install mdbook-mermaid
-        run: cargo install mdbook-mermaid
+      # 4. IMPORTANT — installer Mermaid dans le projet
+      - name: Prepare Mermaid support
+        run: |
+          mdbook-mermaid install .
+          ls -R
 
-      # 5. Initialiser Mermaid dans le projet
-      - name: Install Mermaid assets into the book
-        run: mdbook-mermaid install .
-
-      # 6. Build du site
+      # 5. Build
       - name: Build book
         run: mdbook build
 
-      # 7. Setup GitHub Pages
+      # 6. Setup Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 8. Upload du site généré
+      # 7. Upload
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./book
 
-      # 9. Déploiement
-      - name: Deploy to GitHub Pages
+      # 8. Deploy
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
