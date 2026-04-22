@@ -30,10 +30,41 @@ I design integration strategies based on context, constraints and long-term sust
 
 ```mermaid
 flowchart LR
-    U[Business User] --> A[Power Apps]
-    A --> D[Dataverse]
-    D --> F[Power Automate]
-    F --> API[REST API]
-    API --> E[External System]
-    F --> S[SharePoint / Documents]
+    subgraph Client Layer
+        U[End Users]
+    end
+
+    subgraph Presentation Layer
+        PA[Power Apps Model-Driven]
+        CP[Custom Pages]
+    end
+
+    subgraph Application Layer
+        DV[Dataverse]
+        PF[Power Automate Flows]
+    end
+
+    subgraph Integration Layer
+        API[REST APIs]
+        AZ[Azure Functions]
+        BUS[Integration Services]
+    end
+
+    subgraph External Systems
+        LEG[Legacy Systems]
+        DOC[Document Management]
+        EXT[External Partners]
+    end
+
+    U --> PA
+    PA --> DV
+    DV --> PF
+    PF --> API
+    API --> AZ
+    AZ --> LEG
+    PF --> DOC
+    PF --> EXT
+
+    DV --> BUS
+    BUS --> LEG
 ```

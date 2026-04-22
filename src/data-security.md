@@ -21,9 +21,42 @@
 - Regulatory alignment
 
 ```mermaid
-flowchart TB
-    C[Classification] --> A[Access Model]
-    A --> R[Roles & Privileges]
-    R --> T[Traceability & Audit]
-    T --> G[Governance Review]
+flowchart TD
+    subgraph Identity
+        AAD[Azure AD]
+    end
+
+    subgraph Access Control
+        RBAC[Role-Based Access]
+        SEC[Security Roles]
+    end
+
+    subgraph Data Layer
+        DV[Dataverse]
+        AUDIT[Audit Logs]
+    end
+
+    subgraph Governance
+        DLP[DLP Policies]
+        ENV[Environment Strategy]
+        ALM[ALM Pipelines]
+    end
+
+    subgraph Compliance
+        TRACE[Traceability]
+        LOG[Monitoring & Logging]
+    end
+
+    AAD --> RBAC
+    RBAC --> SEC
+    SEC --> DV
+
+    DV --> AUDIT
+    AUDIT --> TRACE
+
+    DV --> DLP
+    DLP --> ENV
+    ENV --> ALM
+
+    DV --> LOG
 ```
