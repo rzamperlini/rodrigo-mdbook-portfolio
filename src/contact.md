@@ -2,6 +2,6 @@
 
 ## Let's connect
 
-- LinkedIn: add your profile URL here
-- Email: add your professional email here
-- Availability: freelance, contract or full-time opportunities
+- LinkedIn: [rodrigozamperlini](https://www.linkedin.com/in/rodrigozamperlini/)
+- Email: rzamperlini@rsz.onmicrosoft.com
+- Availability: full-time, contract or freelance opportunities
